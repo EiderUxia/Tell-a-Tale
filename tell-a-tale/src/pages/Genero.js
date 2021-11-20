@@ -1,8 +1,24 @@
-import React from 'react'
+import React,  { useEffect, Fragment, useState } from 'react'
 
 import ActionAreaCard from '../components/Tarjetas'
 
+
+import {GetAllGeneros} from '../api/GeneroAPI';
+
+
 export default function Genero() {
+    const [genero, setGenero] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {
+            //const token = await getTokenSilently(); 
+            //const schoolRes = await GetAll(token);                             
+            const generoRes = await GetAllGeneros();
+            setGenero(generoRes);
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <div>
             <p class="TitulosNoCards">Nombre del genero</p>
@@ -74,6 +90,15 @@ export default function Genero() {
                         A morir por siempre,
                         Noviembre sin ti es sentir que la lluvia">
                 </ActionAreaCard>
+                {genero.map((item, index)=> (
+                <ActionAreaCard key = {item.id}
+                imagen="https://pbs.twimg.com/media/FD_DEkCakAANufi?format=jpg&name=4096x4096"
+                titulo={item.nombre}
+                 descripcion="Cuando sonamos juntos,
+                A querernos siempre,
+                Me duele, este frio Noviembre">
+                </ActionAreaCard>
+                 ))}
             </div>
         </div>
     )

@@ -9,14 +9,14 @@ exports.comic_create = async (req, res) => {
     await newComic
     .save()
     .then(newDBObject => console.log("Success!", newDBObject))
-    .catch((err) => console.log("oops!", err));
+    .catch((err) => console.log("ooooooooops!", err));
 
     res.send(newComic);
 };
 
 exports.comic_getall = async (req, res) =>{
-    const data = await Comic.find().populate("tipo").populate("idCreador");
-
+    const data = await Comic.find().populate("tipo").populate("idCreador").catch((err) => console.log("ooooooooops!", err));;
+    console.log("comics a la orden!");
     res.send(data);
 }; 
 

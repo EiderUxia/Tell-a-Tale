@@ -12,6 +12,8 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import {Link} from "react-router-dom"
 
+import {GetCapituloComicById} from '../api/CapituloAPI';
+
 /* Galeria */
 const itemData = [
     {
@@ -103,6 +105,7 @@ const toBase64 = (file) => new Promise(( res, rej)=>{
 });
 
 const ImageCard = ({data, idx, onClickClose})=>{
+
     return(
         <ImageListItem>
             <img
@@ -128,7 +131,17 @@ const ImageCard = ({data, idx, onClickClose})=>{
 };
 
 export default function EditarCapComic() {
+    const [capitulo, setCapitulo] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const capituloRes = await GetCapituloComicById();
+            setCapitulo(capituloRes);
+        }
 
+        fetchData();
+    }, []);
+
+    
     const [preview, setPreview] = useState(defaultSrc);
 
     const onChangeImg = async e =>{
@@ -217,6 +230,7 @@ export default function EditarCapComic() {
             </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
+                    <h4>{capitulo.nombreCapitulo}</h4>
                     <Button id="guardaCambios" variant="contained" color="success" component={Link} to="/EditarComic">
                         Guardar nuevos datos
                     </Button>

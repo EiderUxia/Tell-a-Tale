@@ -1,8 +1,19 @@
-import React from 'react'
 import ActionAreaCard from '../components/Tarjetas'
 import '../css/perfil.css'
+import React, { useEffect, useState } from 'react'
+
+import {GetUsuarioById} from '../api/UsuarioAPI';
 
 export default function HistoriasSubidas() {
+    const [usuario, setUsuario] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const usuarioRes = await GetUsuarioById();
+            setUsuario(usuarioRes);
+        }
+
+        fetchData();
+    }, []);
 
     return (
         <div className='contenedorPrinc'>
@@ -12,7 +23,7 @@ export default function HistoriasSubidas() {
                         <img class="imgPerfilPerfil" src="http://pm1.narvii.com/6206/1bd213a3214c1d52b9eb657d6f09ed823bc84984_00.jpg" alt="Imagen de perfil"></img>
                     </div>
                     <div class="DatosPerfil">
-                        <h1>Acnologia</h1>
+                        <h1>{usuario.nombre}</h1>
                         <h2>Sobre mi</h2>
                         <p class="desc"> Acnologia es un dragón enorme, más grande que el maestro Makarov en su forma de Titan. En toda su parte superior del cuerpo, está cubierto de escamas negras y redondas, que a su vez están decoradas por escamas con forma en espiral, de color azul. Su parte inferior del cuerpo, específicamente su vientre, la cola interna y las piernas, es de color gris, y parece ser bastante suave. Posee una cabeza roma y redondeada con cuatro cuernos grandes y alargados que se extienden hacia atrás, y tiene ojos pequeños y brillantes blancos. Su boca está llena de dientes afilados, y por debajo una protuberancia alargada hacia abajo. Tiene unas enormes alas con placas que cubren todo su cuerpo, adquiriendo una formación que recuerda a las plumas de un pájaro. Su gran cola se divide en dos en su extremo, donde las placas negras desaparecen, y asume un doble aguijón como aspecto.</p>
                     </div>

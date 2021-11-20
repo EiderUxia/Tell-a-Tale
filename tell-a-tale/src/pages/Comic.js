@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, Fragment, useState} from 'react'
 import '../css/Comic.css'
 import ActionAreaCard from '../components/TarjetasCapcomic'
 
@@ -13,6 +13,9 @@ import Button from '@mui/material/Button';
 
 import {Link} from "react-router-dom"
 
+import {GetComicById} from '../api/ComicAPI';
+
+
 const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
         color: '#ff6d75',
@@ -23,6 +26,16 @@ const StyledRating = styled(Rating)({
 });
 
 export default function ComicEsp() {
+    const [comic, setComic] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const comicRes = await GetComicById();
+            setComic(comicRes);
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <div>
             <img class="imgPortadaComic" src="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium" alt="Imagen de portada"></img>
@@ -51,7 +64,7 @@ export default function ComicEsp() {
                     </Box>
                 </div>
                 <div class="DerechoComic">
-                    <h1 class="text-ag">Acnologia</h1>
+                    <h1 class="text-ag">{comic.titulo}</h1>
                     <h2 class="text-ag">Autor</h2>
                     <p class="desc text-ag"> Acnologia es un dragón enorme,
                         más grande que el maestro Makarov en su forma de Titan.
