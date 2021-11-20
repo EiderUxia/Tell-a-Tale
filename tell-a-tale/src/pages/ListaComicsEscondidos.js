@@ -8,6 +8,7 @@ export default function ListaComicsEscondidos() {
             <p class="TitulosNoCards">Comics escondidos por reportes</p>
             <div className='historias' >
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/E9vwPTbX0AE3r0I?format=jpg&name=large"
                     titulo="01"
                     descripcion="La tarde se aleja,
@@ -15,6 +16,7 @@ export default function ListaComicsEscondidos() {
                 La noche aparece sin ti">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://t2.uc.ltmcdn.com/images/7/8/2/como_cuidar_un_conejo_domestico_7287_orig.jpg"
                     titulo="02"
                     descripcion="Callado en la playa,
@@ -22,6 +24,7 @@ export default function ListaComicsEscondidos() {
                 Me ahoga esta pena">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FEAcm-hVcAECIit?format=jpg&name=large"
                     titulo="03"
                     descripcion="No puedo vivir,
@@ -31,6 +34,7 @@ export default function ListaComicsEscondidos() {
             </div>
             <div className='historias' >
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FD_DEkEaAAIOfLZ?format=jpg&name=4096x4096"
                     titulo="04"
                     descripcion="Escribo tu nombre otra vez,
@@ -38,6 +42,7 @@ export default function ListaComicsEscondidos() {
         Desde aquel Noviembre">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FD_DEkCakAANufi?format=jpg&name=4096x4096"
                     titulo="05"
                     descripcion="Cuando sonamos juntos,
@@ -45,6 +50,7 @@ export default function ListaComicsEscondidos() {
         Me duele, este frio Noviembre">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FD5HVYAUYAAs2Up?format=jpg&name=medium"
                     titulo="06"
                     descripcion="Cuando las hojas caen,
@@ -54,6 +60,7 @@ export default function ListaComicsEscondidos() {
             </div>
             <div className='historias' >
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium"
                     titulo="07"
                     descripcion="Me dice llorando que todo acabo,
@@ -61,6 +68,7 @@ export default function ListaComicsEscondidos() {
          Que brille en la noche de mi corazón">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FD5HV3MVcAEjHRq?format=jpg&name=900x900"
                     titulo="08"
                     descripcion="Otra vez, otra vez,
@@ -68,6 +76,7 @@ export default function ListaComicsEscondidos() {
         Que quiero volver">
                 </ActionAreaCard>
                 <ActionAreaCard
+                    page="escondido"
                     imagen="https://pbs.twimg.com/media/FD_TpSBaUAAWiyt?format=png&name=900x900"
                     titulo="09"
                     descripcion="Tu nombre va escrito en mi piel,

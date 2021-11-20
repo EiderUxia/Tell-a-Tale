@@ -110,7 +110,7 @@ export default function PrimarySearchAppBar(props) {
 
       <MenuItem component={Link} to="/AgregarModerador" onClick={handleMenuClose}>Agregar moderador</MenuItem>
       <MenuItem component={Link} to="/HistoriasPendientesDeAprobar" onClick={handleMenuClose}>Por aprobar</MenuItem>
-      <MenuItem component={Link} to="/HistoriaARevisar" onClick={handleMenuClose}>Revision historias</MenuItem>
+      
       <MenuItem component={Link} to="/ComicsConReporte" onClick={handleMenuClose}>Lista reportados</MenuItem>
   
       <MenuItem component={Link} to="/ComentariosReportados" onClick={handleMenuClose}>Reportes comentarios</MenuItem>

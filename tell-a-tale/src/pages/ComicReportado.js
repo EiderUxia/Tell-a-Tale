@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+import {Link} from "react-router-dom"
 
 
 import {GetComicById} from '../api/ComicAPI';
@@ -53,15 +54,15 @@ export default function ComicReportado() {
                 </div>
                 <Stack direction="row">
                     <div class="JalaPoFavo">
-                        <Button variant="contained" color="success">
+                        <Button variant="contained" color="success" id="irComic" component={Link} to="/Comic">
                             Ir al comic
                         </Button>
                     </div><div class="JalaPoFavo">
-                        <Button variant="contained" color="success">
+                        <Button variant="contained" color="success" id="eliminarRep" component={Link} to="/ComicsConReporte">
                             Eliminar reporte
                         </Button>
                     </div><div class="JalaPoFavo">
-                        <Button variant="contained" color="success">
+                        <Button variant="contained" color="success" id="EsconderCom" component={Link} to="/ListaComicsEscondidos">
                             Esconder comic
                         </Button>
                     </div>

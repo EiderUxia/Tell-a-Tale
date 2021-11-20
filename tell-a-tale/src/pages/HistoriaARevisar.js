@@ -7,8 +7,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 
-import {GetComicById} from '../api/ComicAPI';
+import {Link} from "react-router-dom"
 
+import {GetComicById} from '../api/ComicAPI';
 
 export default function HistoriaARevisar() {
     const [comic, setComic] = useState([]);
@@ -52,7 +53,7 @@ export default function HistoriaARevisar() {
                     </div>
                     <Stack direction="row">
                         <div class="JalaPoFavo">
-                            <Button variant="contained" color="success">
+                            <Button variant="contained" color="success" id="aprobar" component={Link} to="/HistoriasPendientesDeAprobar">
                                 Aprobar comic
                             </Button>
                         </div>
