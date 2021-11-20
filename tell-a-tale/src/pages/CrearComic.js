@@ -32,6 +32,15 @@ const Root = styled('div')(
     font-size: 1.25vw;
   `,
 );
+const defaultSrc ="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium";
+const toBase64 = (file) => new Promise(( res, rej)=>{
+    const reader  = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = e=>{
+        res(reader.result);
+    };
+});
 
 const Label = styled('label')`
     padding: 0 0 4px;
@@ -197,6 +206,15 @@ export default function SubirComic() {
 
     };
 
+    const [preview, setPreview] = useState(defaultSrc);
+
+    const onChangeImg = async e =>{
+        console.log("aqui NO es");
+        const src = await toBase64(e.target.files[0]);
+        setPreview(src);
+        comic.portada = src
+    };
+
     const {
         getRootProps,
         getInputLabelProps,
@@ -220,10 +238,10 @@ export default function SubirComic() {
         <div class="Contenedor">
             <div class="imagenes">
                 <div class="Perfil">
-                    <img class="imgPerfil" src="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium" alt="Imagen de perfil"></img>
+                    <img class="imgPerfil" src= {preview} alt="Imagen de perfil"></img>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <label htmlFor="contained-button-file">
-                            <Input accept="image/*" id="contained-button-file" multiple type="file" />
+                            <Input accept="image/*" id="contained-button-file" multiple type="file" onChange={onChangeImg}/>
                             <Button variant="contained" component="span">
                                 Seleccionar
                             </Button>
@@ -232,7 +250,7 @@ export default function SubirComic() {
                 </div>
 
                 <div class="Portada">
-                    <img class="imgPortada" src="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium" alt="Imagen de portada"></img>
+                    <img class="imgPortada" src={preview}  alt="Imagen de portada"></img>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <label class="JalaPoFavo" htmlFor="contained-button-file">
                             <Input accept="image/*" id="contained-button-file" multiple type="file" />

@@ -24,7 +24,8 @@ exports.capitulo_getbyid = async (req, res) => {
     const {id} = req.params; 
     console.log(req.params);
 
-    const data = await Capitulo.findById(id).populate('idComic');
+   const data = await Capitulo.findById(id).populate('idComic');
+   //const data = await Capitulo.findById(id);
 
     res.send(data);
 };

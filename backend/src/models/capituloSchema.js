@@ -16,10 +16,14 @@ const CapituloComicSchema = new mongoose.Schema({
         minlength: 4,
         maxlength: 150
     },
-    imagen:[{
-        type:String,
+    imagen:{
+        type:Buffer,
         required: true
-    }]
+    },
+    pagina:{
+        type:Buffer,
+        required: true
+    }
     //Aparetemente, el cap es de 16MB
 })
 
