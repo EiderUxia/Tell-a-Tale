@@ -136,8 +136,14 @@ export default function EditarCapComic() {
         async function fetchData() {                       
             const capituloRes = await GetCapituloComicById();
             setCapitulo(capituloRes);
+            //const src = await toBase64(capitulo.imagen);
+            console.log(capitulo);
+            const buff = Buffer.from(capitulo.imagen, "base64");
+            const imag = buff.toString("utf8");
+            //await setPreview(capitulo.imagen);
+            await setPreview(imag);
         }
-
+        
         fetchData();
     }, []);
 
@@ -163,6 +169,7 @@ export default function EditarCapComic() {
         await DeleteCapituloComicById();
     };
 
+    
 
     const [preview, setPreview] = useState(defaultSrc);
 
@@ -195,7 +202,7 @@ export default function EditarCapComic() {
         const arr2 = previewArr.slice(idx+1);
         setPreviewArr([...arr1, ...arr2]);
     };
-
+    
     return (
         <div class="Contenedor">
             <div class="imagenes">

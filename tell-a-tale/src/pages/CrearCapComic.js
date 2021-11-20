@@ -64,6 +64,7 @@ export default function SubirCapComic() {
         nombreCapitulo:"",
         numCapitulo:1,
         imagen:"no",
+        pagina:""
         //imagen:[] //como deberia de ser.
     });
 
@@ -89,6 +90,7 @@ export default function SubirCapComic() {
         console.log("aqui NO es");
         const src = await toBase64(e.target.files[0]);
         setPreview(src);
+        capitulo.imagen = src
     };
 
     const [previewArr, setPreviewArr] = useState([]);
@@ -106,6 +108,7 @@ export default function SubirCapComic() {
         }
         
         setPreviewArr([...previewArr, ...temp]);
+        capitulo.pagina = base64s[0];
     };
 
     useEffect(()=>console.log(previewArr),[previewArr])
@@ -120,7 +123,7 @@ export default function SubirCapComic() {
         <div class="Contenedor">
             <div class="imagenes">
                 <div class="Perfil">
-                    <img class="imgPerfil" src={preview} alt="Imagen de perfil"></img>
+                    <img class="imgPerfil" src={preview} name = 'imagen' value = {preview} alt="Imagen de perfil" ></img>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <label class="JalaPoFavo " htmlFor="contained-button-file">
                             <Input accept="image/*" id="contained-button-file" multiple type="file" onChange={onChangeImg}/>

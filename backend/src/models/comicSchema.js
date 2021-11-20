@@ -17,11 +17,15 @@ const ComicSchema = new mongoose.Schema({ //Aun no lo termino
         type: Number,
         default: 0
     },
-    tipo: [{ //no terminado
+    tipo: [{ 
         type: mongoose.Schema.Types.ObjectId,
         ref: "tipo",
         required: true
-    }]
+    }],
+    portada:{
+        type:Buffer,
+        required: true
+    }
 })
 
 const Comic= mongoose.model('comic', ComicSchema); 

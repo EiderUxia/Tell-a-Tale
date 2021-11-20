@@ -3,7 +3,7 @@ import { axiosBase as axios } from "./Config";
 
 export const GetCapituloComicById = async () => {
     try{
-        const response = await axios.get('/capitulo/' + "614006a087ab0f9a98c06e7c");                                         
+        const response = await axios.get('/capitulo/' + "61996689d2a88b7192f5229b");                                         
         console.log("Obtenido capitulo", response);
         return response.data;
     }

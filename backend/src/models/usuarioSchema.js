@@ -26,6 +26,10 @@ const UsuarioSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    imagen: {
+        type:Buffer,
+        required: true
+    },
     seguidos:[{ //Este requiere trabajo
         type: String,
         required: false //aqui
