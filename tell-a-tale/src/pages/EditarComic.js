@@ -13,7 +13,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from "react-router-dom"
 
-import {GetComicById, ModifyComicById} from '../api/ComicAPI';
+import {GetComicById, ModifyComicById, DeleteComicById} from '../api/ComicAPI';
 
 
 /* Botones */
@@ -220,6 +220,12 @@ export default function EditarComic() {
 
     };
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        console.log("Eliminar un ", comic);
+        await DeleteComicById();
+    };
+
 
     return (
         <div class="Contenedor">
@@ -320,7 +326,7 @@ export default function EditarComic() {
                     <Button variant="contained" color="success" id="guardarComic" onClick = {handleSubmit} component={Link} to="/Perfil">
                         Guardar nuevos datos
                     </Button>
-                    <Button variant="outlined" color="error" id="Eliminarcomic" component={Link} to="/Perfil">
+                    <Button variant="outlined" color="error" id="Eliminarcomic" onClick ={handleDelete} component={Link} to="/Perfil">
                         Eliminar comic
                     </Button>
                 </div>

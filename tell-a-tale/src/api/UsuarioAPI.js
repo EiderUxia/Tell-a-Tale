@@ -39,3 +39,16 @@ export const ModifyUsuarioById = async (usuario) => {
         return error;
     }
 }
+
+export const DeleteUsuarioById = async () => {
+    try{
+        const response = await axios.delete('/usuario/' + "6193fe8c026d537990ab4911");                                         
+        console.log("Eliminar Usuario ", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("ESTE usuario no quiere ATOMIZARSE" + error);
+        return error;
+    }
+}

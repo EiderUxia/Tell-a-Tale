@@ -12,7 +12,7 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import {Link} from "react-router-dom"
 
-import {GetCapituloComicById, ModifyCapituloComicById} from '../api/CapituloAPI';
+import {GetCapituloComicById, ModifyCapituloComicById, DeleteCapituloComicById} from '../api/CapituloAPI';
 
 /* Galeria */
 const itemData = [
@@ -157,6 +157,12 @@ export default function EditarCapComic() {
 
     };
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        console.log("Borrar un ", capitulo);
+        await DeleteCapituloComicById();
+    };
+
 
     const [preview, setPreview] = useState(defaultSrc);
 
@@ -253,7 +259,7 @@ export default function EditarCapComic() {
                     <Button id="guardaCambios" variant="contained" color="success" onClick = {handleSubmit}component={Link} to="/EditarComic">
                         Guardar nuevos datos
                     </Button>
-                    <Button id="EliminarCap" variant="outlined" color="error"  component={Link} to="/EditarComic">
+                    <Button id="EliminarCap" variant="outlined" color="error" onClick = {handleDelete} component={Link} to="/EditarComic">
                         Eliminar capitulo
                     </Button>
                 </div>

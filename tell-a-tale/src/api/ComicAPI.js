@@ -54,4 +54,16 @@ export const ModifyComicById = async (comic) => {
     }
 }
 
+export const DeleteComicById = async () => {
+    try{
+        const response = await axios.delete('/comic/' + "6199273daaed2ca838909ccc");                                         
+        console.log("Eliminar capitulo ", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("ESTE comic no quiere ATOMIZARSE" + error);
+        return error;
+    }
+}
 
