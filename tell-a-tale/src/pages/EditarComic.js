@@ -13,7 +13,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from "react-router-dom"
 
-import {GetComicById} from '../api/ComicAPI';
+import {GetComicById, ModifyComicById, DeleteComicById} from '../api/ComicAPI';
 
 
 /* Botones */
@@ -204,6 +204,28 @@ export default function EditarComic() {
         fetchData();
     }, []);
 
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setComic({
+            ...comic,
+            [name]:value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Subir un ", comic);
+        await ModifyComicById(comic);
+
+    };
+
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        console.log("Eliminar un ", comic);
+        await DeleteComicById();
+    };
+
 
     return (
         <div class="Contenedor">
@@ -248,6 +270,9 @@ export default function EditarComic() {
                             label="Nombre"
                             defaultValue=" "
                             variant="standard"
+                            value = {comic.titulo}
+                            name = "titulo"
+                            onChange = {handleChange}
                         />
                         <div>
                             <TextField
@@ -298,10 +323,10 @@ export default function EditarComic() {
             </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
-                    <Button variant="contained" color="success" id="guardarComic" component={Link} to="/Perfil">
+                    <Button variant="contained" color="success" id="guardarComic" onClick = {handleSubmit} component={Link} to="/Perfil">
                         Guardar nuevos datos
                     </Button>
-                    <Button variant="outlined" color="error" id="Eliminarcomic" component={Link} to="/Perfil">
+                    <Button variant="outlined" color="error" id="Eliminarcomic" onClick ={handleDelete} component={Link} to="/Perfil">
                         Eliminar comic
                     </Button>
                 </div>

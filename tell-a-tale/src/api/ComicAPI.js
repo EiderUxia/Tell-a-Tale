@@ -40,3 +40,30 @@ export const CreateComic = async (comic) => {
         return error;
     }
 }
+
+export const ModifyComicById = async (comic) => {
+    try{
+        const response = await axios.put('/comic/' + "614000cbdaea07194602c6bd",comic);                                         
+        console.log("ModificarUsuario", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Se resiste al CAMBIOOOOOOOOOOOO comic" + error);
+        return error;
+    }
+}
+
+export const DeleteComicById = async () => {
+    try{
+        const response = await axios.delete('/comic/' + "6199273daaed2ca838909ccc");                                         
+        console.log("Eliminar capitulo ", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("ESTE comic no quiere ATOMIZARSE" + error);
+        return error;
+    }
+}
+
