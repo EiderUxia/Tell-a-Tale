@@ -1,0 +1,32 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import '../css/tarjetas.css'
+
+export default function ActionAreaCard(props) {
+  return (
+    <Card class="cardMod" sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          class="IMGCard"
+          component="img"
+          image={props.imagen}
+          alt="green iguana"
+        />
+        <CardContent
+          class="ContentCard"
+          >
+          <Typography class="Title" gutterBottom variant="h5" component="div">
+            {props.titulo}
+          </Typography>
+          <Typography class="Desc" variant="body2" color="text.secondary">
+            {props.descripcion}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
