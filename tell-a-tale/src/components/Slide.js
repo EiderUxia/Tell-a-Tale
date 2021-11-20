@@ -12,7 +12,7 @@ const Slide = () => {
     const intervaloSlodeShow = useRef(null);
     const siguiente = () => {
         //Comprobar que tenga elementos
-        if (slideshow.current.children.length > 0) {
+        if (slideshow.current != null && slideshow.current.children.length > 0) {
             //Obtener el primer elemento
             const primerElemento = slideshow.current.children[0];
 

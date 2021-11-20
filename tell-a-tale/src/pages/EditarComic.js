@@ -1,14 +1,17 @@
 import React from 'react'
 import '../css/CrearComic.css'
+import ActionAreaCard from '../components/TarjetasCapcomic'
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import PropTypes from 'prop-types';
-import { useAutocomplete } from '@mui/core/AutocompleteUnstyled';
+import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import {Link} from "react-router-dom"
 
 /* Botones */
 const Input = styled('input')({
@@ -268,16 +271,28 @@ export default function EditarComic() {
                     </div>
                 </Box>
             </div>
+            <div class="CapitulosEdit">
+                <h3>Capitulos del comic:</h3>
+                <ActionAreaCard
+                    page="editarComic"
+                    imagen="https://ichef.bbci.co.uk/news/640/cpsprodpb/125FC/production/_103206257_sandwich.png"
+                    titulo="El regreso del sanwich maldito parte 1"
+                    descripcion="Callado en la playa,
+                        Te lloro en silencio otra vez,
+                        Me ahoga esta pena">
+                </ActionAreaCard>
+            </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
-                    <Button variant="contained" color="success">
+                    <Button variant="contained" color="success" id="guardarComic" component={Link} to="/Perfil">
                         Guardar nuevos datos
                     </Button>
-                    <Button variant="outlined" color="error" id="Eliminarcomic">
-                            Eliminar comic
-                        </Button>
+                    <Button variant="outlined" color="error" id="Eliminarcomic" component={Link} to="/Perfil">
+                        Eliminar comic
+                    </Button>
                 </div>
             </Stack>
+
         </div>
     )
 }

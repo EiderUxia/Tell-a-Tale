@@ -5,6 +5,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+#btnCreaComic,#guardarComic{
+    color: white;
+}
+
 .JalaPoFavo {
     margin: auto;
 }
@@ -41,4 +45,10 @@
 
 #Eliminarcomic{
     margin-left: 1vw;
+    color: rgb(236, 92, 67);
+}
+
+.CapitulosEdit {
+    width: max-content;
+    margin: 2vw auto;
 }

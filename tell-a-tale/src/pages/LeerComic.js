@@ -43,7 +43,7 @@ export default function LeerComic() {
                                 label="Escribe lo que piensas"
                                 multiline
                                 rows={3}
-                                defaultValue="Default Value"
+                                defaultValue=" "
                                 variant="filled"
                             />
                         </div>

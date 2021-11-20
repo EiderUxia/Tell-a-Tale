@@ -5,16 +5,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import '../css/tarjetas.css'
+import {Link} from "react-router-dom";
 
 export default function ActionAreaCard(props) {
   return (
     <Card class="cardMod" sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea component={Link} to="/Comic">
         <CardMedia
           class="IMGCard"
           component="img"
           image={props.imagen}
           alt="green iguana"
+          
         />
         <CardContent
           class="ContentCard"

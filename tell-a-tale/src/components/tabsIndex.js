@@ -228,11 +228,9 @@ export default function BasicTabs() {
                 </div>
             </TabPanel>
             <TabPanel value={value} index={6}>
-                Aquí aparece la lista de generos que hay, seleccionas uno y te envía a una pagina donde aparecen todos los cómics por ese genero.
-                Página aún pendiente.
-                La programadora está hecho con internet explorer, aún no procesa lo que falta.
-                Si lees esto, por favor recuerdamelo.
-                PD: Coloco salto de linea pero no se pone aiuda
+                <a class="GenerosTab" href="/Genero">Accion</a>
+                <a class="GenerosTab" href="/Genero">Aventura</a>
+                <a class="GenerosTab" href="/Genero">Romance</a>
             </TabPanel>
         </Box>
     );

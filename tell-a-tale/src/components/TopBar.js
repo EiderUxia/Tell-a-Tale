@@ -15,8 +15,11 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import '../css/TopBar.css'
-import logo from '../imagenes/Recurso2.png'
+import FeedbackIcon from '@mui/icons-material/Feedback';
+import '../css/TopBar.css';
+import logo from '../imagenes/Recurso2.png';
+import {Link} from "react-router-dom";
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -100,9 +103,20 @@ export default function PrimarySearchAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Perfil</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Subir cómic</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Seguidos</MenuItem>
+      <MenuItem component={Link} to="/Perfil" onClick={handleMenuClose}>Perfil</MenuItem>
+      <MenuItem component={Link} to="/CrearComic" onClick={handleMenuClose}>Subir cómic</MenuItem>
+      <MenuItem component={Link} to="/Favoritos" onClick={handleMenuClose}>Seguidos</MenuItem>
+      <MenuItem component={Link} to="/Ajustes" onClick={handleMenuClose}>Ajustes</MenuItem>
+
+      <MenuItem component={Link} to="/AgregarModerador" onClick={handleMenuClose}>Agregar moderador</MenuItem>
+      <MenuItem component={Link} to="/HistoriasPendientesDeAprobar" onClick={handleMenuClose}>Por aprobar</MenuItem>
+      <MenuItem component={Link} to="/HistoriaARevisar" onClick={handleMenuClose}>Revision historias</MenuItem>
+      <MenuItem component={Link} to="/ComicsConReporte" onClick={handleMenuClose}>Lista reportados</MenuItem>
+  
+      <MenuItem component={Link} to="/ComentariosReportados" onClick={handleMenuClose}>Reportes comentarios</MenuItem>
+      <MenuItem component={Link} to="/ListaComicsEscondidos" onClick={handleMenuClose}>Escondidos</MenuItem>
+     
+
     </Menu>
   );
 
@@ -132,7 +146,7 @@ export default function PrimarySearchAppBar(props) {
         <p>Mensajes</p>
       </MenuItem>
       <MenuItem>
-        <IconButton
+        <IconButton 
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
@@ -150,6 +164,7 @@ export default function PrimarySearchAppBar(props) {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+           
         >
           <AccountCircle />
         </IconButton>
@@ -161,13 +176,17 @@ export default function PrimarySearchAppBar(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-           <img class="Logo" src={logo} alt="Logo" />
+        <Toolbar >
+          <a href="/">
+          <img class="Logo" src={logo} alt="Logo"/>
+          </a>
+           
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
+            
           >
             Tell a tale
           </Typography>
@@ -184,18 +203,22 @@ export default function PrimarySearchAppBar(props) {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={0} color="error">
-                <MailIcon />
+                <FeedbackIcon />
               </Badge>
             </IconButton>
             <IconButton
+            id="notificacion"
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              component={Link} to="/Notificaciones"
             >
               <Badge badgeContent={0} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <Link to="/IniciarSesion"><button class="btnBarra"  >Inicia sesion</button></Link>
+            <Link to="/Registrarse"><button class="btnBarra"  >Registrate</button></Link>
             <IconButton
               size="large"
               edge="end"

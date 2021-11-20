@@ -5,13 +5,10 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 
-
-import '../css/iniciarSesion.css'
-
-export default function IniciarSesion() {
+export default function AgregarModerador() {
     return (
-        <div class="ContenedorIniciarSesion">
-             <div class="SegundoContenedorIS">
+        <div class="ContenedorRegistrarse">
+             <div class="SegundoContenedorRegistrarse">
                 <Box id="CajaDeDatos"
                     component="form"
                     sx={{
@@ -21,6 +18,20 @@ export default function IniciarSesion() {
                     autoComplete="off"
                 >
                     <div>
+                        <TextField
+                            required
+                            id="standard-required"
+                            label="Nombre de Usuario"
+                            defaultValue=" "
+                            variant="standard"
+                        />
+                        <TextField
+                            required
+                            id="standard-required"
+                            label="Apodo"
+                            defaultValue=" "
+                            variant="standard"
+                        />
                         <TextField
                             required
                             id="standard-required"
@@ -38,9 +49,9 @@ export default function IniciarSesion() {
                     </div>
                 </Box>
                 <Stack direction="row">
-                        <div class="JalaPoFavo iniciarSesionBtn">
+                        <div class="JalaPoFavo registrarse">
                             <Button variant="contained" color="success">
-                                Iniciar Sesion
+                                Crear nuevo moderador
                             </Button>
                         </div>
                     </Stack>

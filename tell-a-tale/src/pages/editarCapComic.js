@@ -1,4 +1,4 @@
-import React, {useEffect, useState}from 'react'
+import React, {useEffect,useState} from 'react'
 import '../css/CrearCapComic.css'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -13,13 +13,85 @@ import Stack from '@mui/material/Stack';
 import {Link} from "react-router-dom"
 
 /* Galeria */
-
+const itemData = [
+    {
+        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+        title: 'Breakfast',
+        author: '@bkristastucchio',
+        rows: 2,
+        cols: 2,
+        featured: true,
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+        title: 'Burger',
+        author: '@rollelflex_graphy726',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+        title: 'Camera',
+        author: '@helloimnik',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+        title: 'Coffee',
+        author: '@nolanissac',
+        cols: 2,
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+        title: 'Hats',
+        author: '@hjrc33',
+        cols: 2,
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+        title: 'Honey',
+        author: '@arwinneil',
+        rows: 2,
+        cols: 2,
+        featured: true,
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+        title: 'Basketball',
+        author: '@tjdragotta',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
+        title: 'Fern',
+        author: '@katie_wasserman',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
+        title: 'Mushrooms',
+        author: '@silverdalex',
+        rows: 2,
+        cols: 2,
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
+        title: 'Tomato basil',
+        author: '@shelleypauls',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
+        title: 'Sea star',
+        author: '@peterlaster',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+        title: 'Bike',
+        author: '@southside_customs',
+        cols: 2,
+    },
+];
 /* Botones */
 const Input = styled('input')({
     display: 'none',
 });
 
-const defaultSrc ="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium";
+const defaultSrc = "https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium";
 
 const toBase64 = (file) => new Promise(( res, rej)=>{
     const reader  = new FileReader();
@@ -55,12 +127,11 @@ const ImageCard = ({data, idx, onClickClose})=>{
     );
 };
 
-export default function SubirCapComic() {
+export default function EditarCapComic() {
 
     const [preview, setPreview] = useState(defaultSrc);
 
     const onChangeImg = async e =>{
-        console.log("aqui NO es");
         const src = await toBase64(e.target.files[0]);
         setPreview(src);
     };
@@ -98,7 +169,7 @@ export default function SubirCapComic() {
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <label class="JalaPoFavo " htmlFor="contained-button-file">
                             <Input accept="image/*" id="contained-button-file" multiple type="file" onChange={onChangeImg}/>
-                            <Button variant="contained" component="span" >
+                            <Button variant="contained" component="span">
                                 Miniatura
                             </Button>
                         </label>
@@ -138,6 +209,7 @@ export default function SubirCapComic() {
                 <ImageList >
                     <ImageListItem key="Subheader" cols={2}>
                     </ImageListItem>
+
                     {
                         previewArr.map((el, i)=><ImageCard key={i} idx={i} data={el} onClickClose={onClickClose}/>)
                     }
@@ -145,8 +217,11 @@ export default function SubirCapComic() {
             </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
-                    <Button id="subirComic" variant="contained" color="success"  component={Link} to="/Comic">
-                        Subir capitulo
+                    <Button id="guardaCambios" variant="contained" color="success" component={Link} to="/EditarComic">
+                        Guardar nuevos datos
+                    </Button>
+                    <Button id="EliminarCap" variant="outlined" color="error"  component={Link} to="/EditarComic">
+                        Eliminar capitulo
                     </Button>
                 </div>
             </Stack>

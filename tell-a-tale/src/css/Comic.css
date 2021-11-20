@@ -16,6 +16,9 @@
     background-color: rgb(41, 40, 41);
     margin: 0 auto;
 }
+.IzquierdoComicRevisiones{
+    background-color: rgb(41, 40, 41);
+}
 
 .IzquierdoComic {
     background-color: rgb(41, 40, 41);
@@ -38,6 +41,16 @@
 
 #corazon {
     float: left;
+}
+
+#btnEditar, #btnCrearCap{
+    color:azure;
+    background-color:  #3b0a58;
+}
+
+#botonesCreador{
+    text-align: right;
+    margin-left: 62%;
 }
 
 .Calificacion {
@@ -73,6 +86,10 @@
     box-shadow: -2px 15px 34px 3px rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: -2px 15px 34px 3px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: -2px 15px 34px 3px rgba(0, 0, 0, 0.6);
+}
+
+.ReporteComic{
+    color: black;
 }
 
 @media only screen and (max-width: 991px) {
@@ -114,9 +131,27 @@
         transform: translate(0, -13vw);
         -webkit-transform: translate(0, -13vw);
     }
+    .IzquierdoComicRevisiones{
+        
+        padding-top: 3vw;
+        margin: 0;
+        width: 70vw;
+        margin: 0 auto;
+    }
+    .NotaReporteComic{
+        transform: translate(0, -13vw);
+        width: 70vw;
+        margin: auto;
+    }
 }
 
 @media only screen and (min-width: 992px) {
+    .IzquierdoComicRevisiones{
+        padding-top: 2vw;
+        margin: 0;
+        width: 20vw;
+        float: left;
+    }
     .text-ag {
         margin: 5px;
     }
@@ -152,5 +187,10 @@
         padding: 0.5vw;
         margin: auto;
         transform: translate(5vw, 2.8vw);
+    }
+    .NotaReporteComic{
+        width: 70vw;
+        margin: auto;
+        transform: translate(0, -12vw);
     }
 }
