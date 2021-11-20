@@ -40,3 +40,18 @@ export const CreateComic = async (comic) => {
         return error;
     }
 }
+
+export const ModifyComicById = async (comic) => {
+    try{
+        const response = await axios.put('/comic/' + "614000cbdaea07194602c6bd",comic);                                         
+        console.log("ModificarUsuario", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Se resiste al CAMBIOOOOOOOOOOOO comic" + error);
+        return error;
+    }
+}
+
+

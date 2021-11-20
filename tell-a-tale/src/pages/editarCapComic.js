@@ -12,7 +12,7 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import {Link} from "react-router-dom"
 
-import {GetCapituloComicById} from '../api/CapituloAPI';
+import {GetCapituloComicById, ModifyCapituloComicById} from '../api/CapituloAPI';
 
 /* Galeria */
 const itemData = [
@@ -141,7 +141,23 @@ export default function EditarCapComic() {
         fetchData();
     }, []);
 
-    
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setCapitulo({
+            ...capitulo,
+            [name]:value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Subir un ", capitulo);
+        await ModifyCapituloComicById(capitulo);
+
+    };
+
+
     const [preview, setPreview] = useState(defaultSrc);
 
     const onChangeImg = async e =>{
@@ -205,6 +221,9 @@ export default function EditarCapComic() {
                             label="Nombre del capitulo"
                             defaultValue=" "
                             variant="standard"
+                            value = {capitulo.nombreCapitulo}
+                            name = "nombreCapitulo"
+                            onChange = {handleChange}
                         />
                     </div>
                 </Box>
@@ -231,7 +250,7 @@ export default function EditarCapComic() {
             <Stack direction="row">
                 <div class="JalaPoFavo">
                     <h4>{capitulo.nombreCapitulo}</h4>
-                    <Button id="guardaCambios" variant="contained" color="success" component={Link} to="/EditarComic">
+                    <Button id="guardaCambios" variant="contained" color="success" onClick = {handleSubmit}component={Link} to="/EditarComic">
                         Guardar nuevos datos
                     </Button>
                     <Button id="EliminarCap" variant="outlined" color="error"  component={Link} to="/EditarComic">

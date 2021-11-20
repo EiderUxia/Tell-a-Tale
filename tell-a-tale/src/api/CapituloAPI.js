@@ -26,3 +26,16 @@ export const CreateCapituloComic = async (capitulo) => {
         return error;
     }
 }
+
+export const ModifyCapituloComicById = async (capitulo) => {
+    try{
+        const response = await axios.put('/capitulo/' + "614006a087ab0f9a98c06e7c",capitulo);                                         
+        console.log("Modificando capitulo", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Se resiste al CAMBIOOOOOOOOOOOO capitulo" + error);
+        return error;
+    }
+}

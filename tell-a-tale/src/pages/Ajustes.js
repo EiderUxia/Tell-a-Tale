@@ -7,22 +7,50 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
 
-import {GetUsuarioById} from '../api/UsuarioAPI';
+import {GetUsuarioById, ModifyUsuarioById } from '../api/UsuarioAPI';
 /* Botones */
 const Input = styled('input')({
     display: 'none',
 });
 
+
 export default function Ajustes() {
+    
+
     const [usuario, setUsuario] = useState([]);
     useEffect(()=> {
         async function fetchData() {                       
             const usuarioRes = await GetUsuarioById();
             setUsuario(usuarioRes);
+
         }
 
         fetchData();
     }, []);
+
+    const [usuario2, setUsuario2] = useState({
+        nombre:"",
+        contrasena:"",
+        correo:"",
+        tipo: false,
+        seguidos:[]
+    });
+    
+        const handleChange = (e) => {
+            const {name, value} = e.target;
+    
+            setUsuario({
+                ...usuario,
+                [name]:value
+            });
+        };
+    
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            console.log("Subir un ", usuario);
+            await ModifyUsuarioById(usuario);
+    
+        };
     
     return (
         <div className='contenedorPrincAjustes'>
@@ -57,6 +85,9 @@ export default function Ajustes() {
                                 label="Usuario"
                                 defaultValue=" "
                                 variant="standard"
+                                value = {usuario.nombre}
+                                name = "nombre"
+                                onChange = {handleChange}
                             />
                             <div>
                                 <TextField
@@ -74,7 +105,7 @@ export default function Ajustes() {
 
                     <Stack direction="row">
                         <div class="JalaPoFavo">
-                            <Button variant="contained" color="success">
+                            <Button variant="contained" color="success" onClick = {handleSubmit}>
                                 Guardar datos
                             </Button>
                         </div>

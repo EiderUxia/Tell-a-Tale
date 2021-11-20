@@ -26,3 +26,16 @@ export const GetUsuarioById = async () => {
         return error;
     }
 }
+
+export const ModifyUsuarioById = async (usuario) => {
+    try{
+        const response = await axios.put('/usuario/' + "613f0802d3fee5546d011eb6",usuario);                                         
+        console.log("ModificarUsuario", response);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Se resiste al CAMBIOOOOOOOOOOOO Usuario" + error);
+        return error;
+    }
+}
