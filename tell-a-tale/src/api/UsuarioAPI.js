@@ -1,5 +1,18 @@
 import { axiosBase as axios } from "./Config";
 
+export const CreateUsuario = async (usuario) => {
+    try{
+        const response = await axios.post("/usuario", usuario, {
+            //request configuration 
+        })
+        console.log("Crear usuario ", response);
+    }
+    catch(error){
+        console.error("NOOOOOOOOOOOOOOOOOOOOOOOOO Error de creacion de usuario! " + error);
+        return error;
+    }
+}
+
 //quite token
 export const GetUsuarioById = async () => {
     try{

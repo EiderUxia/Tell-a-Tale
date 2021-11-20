@@ -28,3 +28,15 @@ export const GetAll = async () => {
     }
 }
 
+export const CreateComic = async (comic) => {
+    try{
+        const response = await axios.post("/comic", comic, {
+            //request configuration 
+        })
+        console.log("Crear comic ", response);
+    }
+    catch(error){
+        console.error("NOOOOOOOOOOOOOOOOOOOOOOOOO Error de creacion de comic! " + error);
+        return error;
+    }
+}
