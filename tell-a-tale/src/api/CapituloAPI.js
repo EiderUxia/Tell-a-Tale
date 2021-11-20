@@ -13,3 +13,16 @@ export const GetCapituloComicById = async () => {
         return error;
     }
 }
+
+export const CreateCapituloComic = async (capitulo) => {
+    try{
+        const response = await axios.post("/capitulo", capitulo, {
+            //request configuration 
+        })
+        console.log("Crear capitulo ", response);
+    }
+    catch(error){
+        console.error("NOOOOOOOOOOOOOOOOOOOOOOOOO Error de creacion de capitulo! " + error);
+        return error;
+    }
+}

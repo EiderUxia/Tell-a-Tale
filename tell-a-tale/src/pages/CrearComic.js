@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, Fragment, useState} from 'react'
 import '../css/CrearComic.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from "react-router-dom";
 
+
+import { CreateComic } from '../api/ComicAPI';
 
 /* Botones */
 const Input = styled('input')({
@@ -171,6 +173,30 @@ const Listbox = styled('ul')(
 );
 
 export default function SubirComic() {
+    const [comic, setComic] = useState({
+        titulo:"",
+        idCreador:"613f0802d3fee5546d011eb6",
+        calificacion:1,
+        tipo:"613fdf5a9437ecfe63418226",
+        //capitulos:[]
+    });
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setComic({
+            ...comic,
+            [name]:value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Subir un ", comic);
+        await CreateComic(comic);
+
+    };
+
     const {
         getRootProps,
         getInputLabelProps,
@@ -233,6 +259,9 @@ export default function SubirComic() {
                             label="Nombre"
                             defaultValue=" "
                             variant="standard"
+                            value = {comic.titulo}
+                            name = "titulo"
+                            onChange = {handleChange}
                         />
                         <div>
                             <TextField
@@ -271,7 +300,7 @@ export default function SubirComic() {
             </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
-                    <Button id="btnCreaComic" variant="contained" color="success" component={Link} to="/Perfil">
+                    <Button id="btnCreaComic" variant="contained" color="success" onClick= {handleSubmit} component={Link} to="/Perfil">
                         Crear comic
                     </Button>
                 </div>

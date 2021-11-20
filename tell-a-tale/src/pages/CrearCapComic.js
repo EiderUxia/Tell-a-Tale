@@ -12,6 +12,9 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import {Link} from "react-router-dom"
 
+
+import { CreateCapituloComic } from '../api/CapituloAPI';
+
 /* Galeria */
 
 /* Botones */
@@ -56,6 +59,29 @@ const ImageCard = ({data, idx, onClickClose})=>{
 };
 
 export default function SubirCapComic() {
+    const [capitulo, setCapitulo] = useState({
+        idComic:"614000cbdaea07194602c6bd",
+        nombreCapitulo:"",
+        numCapitulo:1,
+        imagen:"no",
+        //imagen:[] //como deberia de ser.
+    });
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setCapitulo({
+            ...capitulo,
+            [name]:value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Subir un ", capitulo);
+        await CreateCapituloComic(capitulo);
+
+    };
 
     const [preview, setPreview] = useState(defaultSrc);
 
@@ -121,6 +147,9 @@ export default function SubirCapComic() {
                             label="Nombre del capitulo"
                             defaultValue=" "
                             variant="standard"
+                            name ="nombreCapitulo"
+                            value = {capitulo.nombreCapitulo} 
+                            onChange = {handleChange}
                         />
                     </div>
                 </Box>
@@ -145,7 +174,7 @@ export default function SubirCapComic() {
             </div>
             <Stack direction="row">
                 <div class="JalaPoFavo">
-                    <Button id="subirComic" variant="contained" color="success"  component={Link} to="/Comic">
+                    <Button id="subirComic" variant="contained" color="success" onClick = {handleSubmit} component={Link} to="/Comic">
                         Subir capitulo
                     </Button>
                 </div>
