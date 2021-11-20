@@ -2,7 +2,7 @@
 const express = require('express');  //tengo que tenerlo para decirle a la app para que se conporte como una aplicacion de express
 const bodyParser = require("body-parser"); //libreria que ayuda a convertir json a objetos
 require('./src/models/connection'); //necesito conectarme a la base de datos
-
+const cors = require('cors');
 
 /* requires de rutas */
 //todos los requires de todos los router que hayamos definido
@@ -24,6 +24,7 @@ const port = 5000; //5000  //5001
 
 app.use(bodyParser.json());
 //app.use(express.bodyParser()) //Alternativa sin externos
+app.use(cors());
 
 
 //aqui vamos poniendo los router de acuerdo a los modelos que yo tengo

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, Fragment, useState} from 'react'
 import '../css/Comic.css'
 import '../css/LeerComic.css'
 import Box from '@mui/material/Box';
@@ -6,9 +6,22 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+
 import {Link} from "react-router-dom"
 
+import {GetComicById} from '../api/ComicAPI';
+
 export default function HistoriaARevisar() {
+    const [comic, setComic] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const comicRes = await GetComicById();
+            setComic(comicRes);
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <div>
             <img class="imgPortadaComic" src="https://pbs.twimg.com/media/FEAcm-jUcAAh5Cr?format=jpg&name=medium" alt="Imagen de portada"></img>
@@ -19,7 +32,7 @@ export default function HistoriaARevisar() {
                     </div>
                 </div>
                 <div class="DerechoComic">
-                    <h1 class="text-ag">Acnologia</h1>
+                    <h1 class="text-ag">{comic.titulo}</h1>
                     <h2 class="text-ag">Autor</h2>
                     <p class="desc text-ag"> Acnologia es un dragón enorme,
                         más grande que el maestro Makarov en su forma de Titan.

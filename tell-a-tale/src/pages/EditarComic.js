@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, Fragment, useState} from 'react'
 import '../css/CrearComic.css'
 import ActionAreaCard from '../components/TarjetasCapcomic'
 
@@ -12,6 +12,9 @@ import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from "react-router-dom"
+
+import {GetComicById} from '../api/ComicAPI';
+
 
 /* Botones */
 const Input = styled('input')({
@@ -191,6 +194,16 @@ export default function EditarComic() {
         options: Generos,
         getOptionLabel: (option) => option.title,
     });
+    const [comic, setComic] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const comicRes = await GetComicById();
+            setComic(comicRes);
+        }
+
+        fetchData();
+    }, []);
+
 
     return (
         <div class="Contenedor">
@@ -272,6 +285,7 @@ export default function EditarComic() {
                 </Box>
             </div>
             <div class="CapitulosEdit">
+            <h4>{comic.titulo}</h4>
                 <h3>Capitulos del comic:</h3>
                 <ActionAreaCard
                     page="editarComic"

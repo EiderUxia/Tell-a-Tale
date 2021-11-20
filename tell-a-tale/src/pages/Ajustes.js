@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/ajustes.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -6,12 +6,24 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
+
+import {GetUsuarioById} from '../api/UsuarioAPI';
 /* Botones */
 const Input = styled('input')({
     display: 'none',
 });
 
 export default function Ajustes() {
+    const [usuario, setUsuario] = useState([]);
+    useEffect(()=> {
+        async function fetchData() {                       
+            const usuarioRes = await GetUsuarioById();
+            setUsuario(usuarioRes);
+        }
+
+        fetchData();
+    }, []);
+    
     return (
         <div className='contenedorPrincAjustes'>
 
