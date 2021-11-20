@@ -8,9 +8,19 @@ import '../css/tarjetas.css'
 import {Link} from "react-router-dom";
 
 export default function ActionAreaCard(props) {
+  let toDir="/LeerComic";
+  if(props.page==="pendientesAprobar"){
+    toDir="/HistoriaARevisar";
+  }
+  if(props.page==="comicsReporte"){
+    toDir="/ComicReportado";
+  }
+  if(props.page==="escondido"){
+    toDir="/ComicEscondido";
+  }
   return (
     <Card class="cardMod" sx={{ maxWidth: 345 }}>
-      <CardActionArea component={Link} to="/Comic">
+      <CardActionArea component={Link} to={toDir}>
         <CardMedia
           class="IMGCard"
           component="img"
