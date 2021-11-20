@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
-
+import {Link} from "react-router-dom"
 
 export default function HistoriaARevisar() {
     return (
@@ -40,7 +40,7 @@ export default function HistoriaARevisar() {
                     </div>
                     <Stack direction="row">
                         <div class="JalaPoFavo">
-                            <Button variant="contained" color="success">
+                            <Button variant="contained" color="success" id="aprobar" component={Link} to="/HistoriasPendientesDeAprobar">
                                 Aprobar comic
                             </Button>
                         </div>

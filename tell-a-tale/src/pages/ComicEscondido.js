@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+import {Link} from "react-router-dom"
 
 export default function ComicEscondido() {
     return (
@@ -39,12 +40,12 @@ export default function ComicEscondido() {
                     </div>
                     <Stack direction="row">
                         <div class="JalaPoFavo">
-                            <Button variant="contained" color="success">
+                            <Button variant="contained" color="success" id="irAcom" component={Link} to="/Comic">
                                 Ir al comic
                             </Button>
                         </div><div class="JalaPoFavo">
-                            <Button variant="contained" color="success">
-                                Mostrar comic
+                            <Button variant="contained" color="success" id="mostrarCom" component={Link} to="/ListaComicsEscondidos">
+                                Eliminar de ocultos
                             </Button>
                         </div>
                     </Stack>

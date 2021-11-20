@@ -48,6 +48,10 @@
     background-color:  #3b0a58;
 }
 
+#irComic,#eliminarRep,#EsconderCom,#aprobar,#irAcom,#mostrarCom{
+    color: white;
+}
+
 #botonesCreador{
     text-align: right;
     margin-left: 62%;
